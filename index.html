@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sementes de Amor</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0f0c29;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8, 6, 24, 0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px;
+      box-shadow: 0 0 18px rgba(242, 201, 76, 0.25);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d8c98d;
+    }
+
+    .brand-text h1 {
+      font-size: 28px;
+      color: #f2c94c;
+      font-weight: bold;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #f2c94c;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f2c94c;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .contact-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .contact-btn.whatsapp {
+      background: #25d366;
+      color: #0d1b10;
+      border: none;
+    }
+
+    .contact-btn.instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      border: none;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    /* HERO / CARROSSEL */
+    .hero-carousel {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      margin-top: 84px;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.3);
+    }
+
+    .slides {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(1.5);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(8, 6, 24, 0.55), rgba(8, 6, 24, 0.32)),
+        linear-gradient(to top, rgba(8, 6, 24, 0.85), rgba(8, 6, 24, 0.1));
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: calc(100% - 40px);
+      max-width: 900px;
+      padding: 30px;
+    }
+
+    .hero-content .mini-title {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(242, 201, 76, 0.35);
+      border-radius: 999px;
+      color: #f2c94c;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-content h2 {
+      font-size: 56px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: #f1f1f1;
+    }
+
+    .hero-content a {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f2c94c, #e7b93d);
+      color: #1a142f;
+      font-weight: bold;
+      font-size: 15px;
+      box-shadow: 0 8px 25px rgba(242, 201, 76, 0.28);
+      transition: 0.3s;
+    }
+
+    .hero-content a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(242, 201, 76, 0.35);
+    }
+
+    .carousel-controls {
+      position: absolute;
+      z-index: 4;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      pointer-events: none;
+    }
+
+    .carousel-btn {
+      pointer-events: all;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: 0.3s;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(242, 201, 76, 0.9);
+      color: #1a142f;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.4);
+      transition: 0.3s;
+    }
+
+    .dot.active {
+      background: #f2c94c;
+      transform: scale(1.15);
+    }
+
+    /* INSTITUCIONAL */
+    .institucional {
+      padding: 90px 28px;
+      background: #0b0820;
+    }
+
+    .institucional-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .institucional-imagem {
+      width: 45%;
+    }
+
+    .institucional-imagem img {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .institucional-conteudo {
+      width: 55%;
+    }
+
+    .institucional-conteudo h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #f2c94c;
+    }
+
+    .bloco {
+      margin-bottom: 25px;
+    }
+
+    .bloco h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #f2c94c;
+    }
+
+    .bloco p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #eaeaea;
+    }
+
+    /* CATEGORIAS */
+    .categorias {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 28px 90px;
+      text-align: center;
+    }
+
+    .categorias h2 {
+      font-size: 38px;
+      color: #f2c94c;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 320px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-placeholder {
+      width: 100%;
+      height: 240px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: #f2c94c;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ededed;
+      margin-bottom: 18px;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #f2c94c;
+      color: #1a142f;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    /* PROPÓSITO */
+    .proposito {
+      padding: 90px 28px;
+      text-align: center;
+      background: linear-gradient(45deg, #2c1a4d, #0f3c5c);
+    }
+
+    .proposito h2 {
+      font-size: 40px;
+      margin-bottom: 16px;
+      color: #f2c94c;
+    }
+
+    .proposito p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #f4f4f4;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 28px;
+      text-align: center;
+      background: #060510;
+      color: #d8d8d8;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1100px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 992px) {
+      nav {
+        gap: 16px;
+      }
+
+      .hero-content h2 {
+        font-size: 42px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+      }
+
+      .institucional-container {
+        flex-direction: column;
+      }
+
+      .institucional-imagem,
+      .institucional-conteudo {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-carousel {
+        min-height: 620px;
+      }
+
+      .brand-text h1 {
+        font-size: 22px;
+      }
+
+      .brand-text span {
+        font-size: 10px;
+      }
+
+      .hero-content {
+        padding: 20px;
+      }
+
+      .hero-content h2 {
+        font-size: 34px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .carousel-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+      }
+
+      .institucional-conteudo h2,
+      .categorias h2,
+      .proposito h2 {
+        font-size: 30px;
+      }
+
+      .header-right {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-buttons {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="#" class="brand">
+        <img src="./assets/images/logo.jpeg" alt="Logo Sementes de Amor">
+        <div class="brand-text">
+          <span>Meu Escudo é o Amor</span>
+          <h1>Sementes de Amor</h1>
+        </div>
+      </a>
+
+      <div class="header-right">
+        <nav>
+          <a href="#categorias">Camisetas</a>
+          <a href="#categorias">Banhos Terapêuticos</a>
+          <a href="#categorias">Terapias</a>
+        </nav>
+
+        <div class="contact-buttons">
+          <a href="#" class="contact-btn whatsapp">WhatsApp</a>
+          <a href="#" class="contact-btn instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-carousel">
+    <img src="./assets/images/mulher.jpeg" alt="Imagem principal" class="hero-image">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <span class="mini-title">Corpo, mente e espírito</span>
+      <h2>A Evolução é uma escolha, nós somos o caminho</h2>
+      <p>
+        A Sementes de Amor oferece produtos e terapias voltados ao desenvolvimento
+        humano, ao equilíbrio interior e ao despertar espiritual.
+      </p>
+      <a href="#sobre">Conheça nossa essência</a>
+    </div>
+  </section>
+
+  <section class="institucional" id="sobre">
+    <div class="institucional-container">
+      <div class="institucional-imagem">
+        <img src="./assets/images/beija-flor.jpeg" alt="Beija-flor">
+      </div>
+
+      <div class="institucional-conteudo">
+        <h2>Sobre a Sementes de Amor</h2>
+
+        <div class="bloco">
+          <h3>Quem Somos</h3>
+          <p>
+            A empresa <strong>SEMENTES DE AMOR</strong> prioriza o desenvolvimento humano,
+            tanto a nível físico, mental e espiritual. Encontre aqui terapias e produtos
+            que auxiliem na sua evolução e despertar da consciência!
+          </p>
+        </div>
+
+        <div class="bloco">
+          <h3>Missão</h3>
+          <p>
+            Auxiliar, orientar e despertar o potencial divino que existe dentro de cada ser humano!
+          </p>
+        </div>
+
+        <div class="bloco">
+          <h3>Visão</h3>
+          <p>
+            Alcançar um novo patamar de consciência e sabedoria coletiva, respeitando o tempo de cada um!
+          </p>
+        </div>
+
+        <div class="bloco">
+          <h3>Valores</h3>
+          <p>
+            Construir novos comportamentos para o futuro! Buscando assim, a motivação necessária para uma nova realidade dimensional!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="categorias" id="categorias">
+    <h2>Existe uma cura para o mundo, essa cura é o amor...</h2>
+
+    <div class="cards">
+      <div class="card">
+        <img src="./assets/images/camiseta.png" alt="Camisetas">
+
+        <div class="card-content">
+          <h3>Camisetas</h3>
+          <p>
+            Peças com identidade visual espiritual e simbólica, pensadas para expressar energia e propósito.
+          </p>
+          <a href="#">Ver mais</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./assets/images/banho-1.png" alt="Banhos Terapêuticos">
+
+        <div class="card-content">
+          <h3>Banhos Terapêuticos</h3>
+          <p>
+            Elementos voltados à limpeza, harmonização e fortalecimento energético no dia a dia.
+          </p>
+          <a href="./banhos-terapeuticos.html">Ver mais</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./assets/images/terapia.png" alt="Terapias">
+
+        <div class="card-content">
+          <h3>Terapias</h3>
+          <p>
+            Experiências terapêuticas que apoiam o autoconhecimento, o equilíbrio e o despertar da consciência.
+          </p>
+          <a href="./terapias.html">Ver mais</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proposito">
+    <h2>Tudo no universo é energia</h2>
+    <p>
+      Nosso propósito é contribuir com o seu alinhamento interior por meio de produtos,
+      vivências e terapias que fortaleçam o corpo, a mente e o espírito.
+    </p>
+  </section>
+
+  <footer>
+    <p> Rio Pardinho - Balneário Panke, n° 10810 - CEP 96856-000 Santa Cruz do Sul/RS</p>
+    <br>
+    <p>Sementes de Amor © 2026. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentSlide = 0;
+    let autoPlay;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+      });
+
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function prevSlideFn() {
+      const prev = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    }
+
+    function startAutoPlay() {
+      autoPlay = setInterval(nextSlide, 4000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlay);
+      startAutoPlay();
+    }
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      resetAutoPlay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlideFn();
+      resetAutoPlay();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        resetAutoPlay();
+      });
+    });
+
+    startAutoPlay();
+  </script>
+
+</body>
+</html>

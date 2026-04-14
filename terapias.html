@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terapias | Sementes de Amor</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f0c29;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(8, 6, 24, 0.9);
+      padding: 15px 30px;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 50px;
+      border-radius: 50%;
+    }
+
+    .brand h1 {
+      color: #f2c94c;
+    }
+
+    nav a {
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    /* HERO */
+    .hero {
+      height: 50vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('./assets/images/mulher.jpeg') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+    }
+
+    /* CONTEÚDO */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .terapia {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .terapia h3 {
+      color: #f2c94c;
+      margin-bottom: 15px;
+      font-size: 26px;
+    }
+
+    .terapia p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .terapia ul {
+      padding-left: 20px;
+    }
+
+    .terapia li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .cta a {
+      background: #f2c94c;
+      color: #1a142f;
+      padding: 12px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 28px;
+      text-align: center;
+      background: #060510;
+      color: #d8d8d8;
+      font-size: 14px;
+    }
+
+    .terapia-container {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .terapia-imagem {
+      width: 40%;
+    }
+
+    .terapia-imagem img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .terapia-conteudo {
+      width: 60%;
+    }
+
+    .page-hero {
+      padding: 90px 28px 50px;
+      background:
+        linear-gradient(to right, rgba(8, 6, 24, 0.86), rgba(8, 6, 24, 0.65)),
+        url('./assets/images/floresta.png') center/cover no-repeat;
+      text-align: center;
+    }
+
+    .page-hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-hero span {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(242, 201, 76, 0.35);
+      border-radius: 999px;
+      color: #f2c94c;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .page-hero h2 {
+      font-size: 48px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #f1f1f1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .page-hero h2 {
+        font-size: 34px;
+      }
+
+      .page-hero p {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .terapia-container {
+        flex-direction: column;
+      }
+
+      .terapia-imagem,
+      .terapia-conteudo {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="brand">
+      <img src="./assets/images/estrela.jpeg">
+      <h1>Sementes de Amor</h1>
+    </div>
+
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./banhos-terapeuticos.html">Banhos</a>
+      <a href="./terapias.html">Terapias</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <span>Terapias Integrativas</span>
+    <h2>Terapias</h2>
+    <p>
+      Conheça experiências terapêuticas voltadas ao equilíbrio energético,
+      ao autoconhecimento e ao despertar da consciência.
+    </p>
+  </div>
+</section>
+
+<!-- CONTEÚDO -->
+<section class="container">
+
+  <div class="terapia">
+    <div class="terapia-container">
+
+        <div class="terapia-imagem">
+        <img src="./assets/images/mao.png" alt="Foto Áurica">
+        </div>
+
+        <div class="terapia-conteudo">
+        <h3>Foto Áurica</h3>
+
+        <p>
+            A Foto Áurica é uma ferramenta de análise energética que busca identificar
+            padrões de energia no campo emocional, mental e espiritual.
+        </p>
+
+        <p><strong>Pode auxiliar na percepção de:</strong></p>
+
+        <ul>
+            <li>Energias densas e represadas</li>
+            <li>Desequilíbrio físico, mental ou espiritual</li>
+            <li>Conflitos emocionais</li>
+            <li>Stress</li>
+            <li>Depressão</li>
+            <li>Indícios relacionados ao bem-estar físico e energético</li>
+            <li>Possíveis processos inflamatórios ou desequilíbrios energéticos</li>
+        </ul>
+        </div>
+
+    </div>
+    </div>
+
+  <div class="cta">
+    <a href="./index.html">Voltar para a página inicial</a>
+  </div>
+
+</section>
+
+<footer>
+  <p>Sementes de Amor © 2026. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

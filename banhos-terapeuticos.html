@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banhos Terapêuticos | Sementes de Amor</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0f0c29;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8, 6, 24, 0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px;
+      box-shadow: 0 0 18px rgba(242, 201, 76, 0.25);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d8c98d;
+    }
+
+    .brand-text h1 {
+      font-size: 28px;
+      color: #f2c94c;
+      font-weight: bold;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #f2c94c;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f2c94c;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .contact-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .contact-btn.whatsapp {
+      background: #25d366;
+      color: #0d1b10;
+      border: none;
+    }
+
+    .contact-btn.instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      border: none;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    /* HERO */
+    .page-hero {
+      padding: 90px 28px 50px;
+      background:
+        linear-gradient(to right, rgba(8, 6, 24, 0.86), rgba(8, 6, 24, 0.65)),
+        url('./assets/images/floresta.png') center/cover no-repeat;
+      text-align: center;
+    }
+
+    .page-hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-hero span {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(242, 201, 76, 0.35);
+      border-radius: 999px;
+      color: #f2c94c;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .page-hero h2 {
+      font-size: 48px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #f1f1f1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* PRODUTOS */
+    .produtos {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 28px 90px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h3 {
+      font-size: 38px;
+      color: #f2c94c;
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      font-size: 17px;
+      color: #e7e7e7;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .produtos-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .produto-card {
+      width: 340px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .produto-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .produto-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .produto-content {
+      padding: 22px;
+    }
+
+    .produto-content h4 {
+      font-size: 24px;
+      color: #f2c94c;
+      margin-bottom: 12px;
+    }
+
+    .produto-content p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #ededed;
+      margin-bottom: 16px;
+    }
+
+    .produto-tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(242, 201, 76, 0.12);
+      color: #f2c94c;
+      border: 1px solid rgba(242, 201, 76, 0.22);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* CTA */
+    .cta-retorno {
+      text-align: center;
+      padding: 0 28px 80px;
+    }
+
+    .cta-retorno a {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f2c94c, #e7b93d);
+      color: #1a142f;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .cta-retorno a:hover {
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 28px;
+      text-align: center;
+      background: #060510;
+      color: #d8d8d8;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1100px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .brand-text h1 {
+        font-size: 22px;
+      }
+
+      .brand-text span {
+        font-size: 10px;
+      }
+
+      .header-right {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page-hero h2 {
+        font-size: 34px;
+      }
+
+      .page-hero p {
+        font-size: 16px;
+      }
+
+      .section-title h3 {
+        font-size: 30px;
+      }
+
+      .produto-card {
+        width: 100%;
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="./index.html" class="brand">
+        <img src="./assets/images/estrela.jpeg" alt="Logo Sementes de Amor">
+        <div class="brand-text">
+          <span>Despertar e Evolução</span>
+          <h1>Sementes de Amor</h1>
+        </div>
+      </a>
+
+      <div class="header-right">
+        <nav>
+          <a href="./index.html#categorias">Camisetas</a>
+          <a href="./banhos-terapeuticos.html">Banhos Terapêuticos</a>
+          <a href="./index.html#categorias">Terapias</a>
+        </nav>
+
+        <div class="contact-buttons">
+          <a href="#" class="contact-btn whatsapp">WhatsApp</a>
+          <a href="#" class="contact-btn instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span>Produtos Terapêuticos</span>
+      <h2>Banhos Terapêuticos</h2>
+      <p>
+        Produtos voltados à harmonização, limpeza energética e fortalecimento interior,
+        pensados para apoiar seu processo de equilíbrio e bem-estar.
+      </p>
+    </div>
+  </section>
+
+  <section class="produtos">
+    <div class="section-title">
+      <h3>Nossos Banhos</h3>
+      <p>
+        Conheça os banhos terapêuticos disponíveis e escolha aquele que mais combina
+        com o momento que você deseja viver.
+      </p>
+    </div>
+
+    <div class="produtos-grid" id="produtos-grid"></div>
+  </section>
+
+  <section class="cta-retorno">
+    <a href="./index.html">Voltar para a página inicial</a>
+  </section>
+
+  <footer>
+    <p>Sementes de Amor © 2026. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const banhos = [
+      {
+        nome: 'Banho de Limpeza Energética',
+        imagem: 'banho-1.png',
+        descricao: 'Auxilia na harmonização das energias e no fortalecimento do bem-estar interior.'
+      },
+      {
+        nome: 'Banho de Proteção',
+        imagem: 'banho-2.png',
+        descricao: 'Pensado para favorecer equilíbrio, proteção e conexão com boas vibrações.'
+      }
+    ];
+
+    const produtosGrid = document.getElementById('produtos-grid');
+
+    banhos.forEach((banho) => {
+      const card = document.createElement('article');
+      card.className = 'produto-card';
+
+      card.innerHTML = `
+        <img src="./assets/images/${banho.imagem}" alt="${banho.nome}">
+        <div class="produto-content">
+          <h4>${banho.nome}</h4>
+          <p>${banho.descricao}</p>
+          <span class="produto-tag">Banho terapêutico</span>
+        </div>
+      `;
+
+      produtosGrid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
